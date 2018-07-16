@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminDoctor extends CI_Controller {
+class AdminProduct extends CI_Controller {
 	
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model('admin/DoctorModel','DoctorModel');
+		$this->load->model('admin/ProductModel','ProductModel');
 		
     }
 	
@@ -30,39 +30,29 @@ class AdminDoctor extends CI_Controller {
         }
 	}
 	
-	public function doctorListing()
+	public function productListing()
 	{
-		$isLoggedIn = $this->session->userdata('isLoggedIn');
-        
-        if(!isset($isLoggedIn) || $isLoggedIn != TRUE)
-        {
-			     redirect('admin');
-        }
-        else
-        {
-			$data["departments"] = $this->DoctorModel->getDepartments();
-			$data["bloodgroups"] = array('A+','A-','B+','B-','O+','O-','AB+','AB-');
-			$this->load->view('admin/includes/header');
-			$this->load->view('admin/includes/nav');
-			$this->load->view('admin/doctor/view',$data);
-			$this->load->view('admin/includes/footer');
-		}
+		$data["categories"] = $this->ProductModel->getCategories();
+		$this->load->view('admin/includes/header');
+		$this->load->view('admin/includes/nav');
+		$this->load->view('admin/product/view',$data);
+		$this->load->view('admin/includes/footer');
 	}
 	
 	
-	public function getDoctorData()
+	public function getProductData()
 	{
 		
-		$data = $this->DoctorModel->viewRecords();
+		$data = $this->ProductModel->viewRecords();
 		echo json_encode($data);
 		
 	}
 
 	
-	function save_doctor(){
+	function save_product(){
 
-		if(isset($_FILES['avatar']['name']) && !empty($_FILES['avatar']['name'])){
-             $uploadPath = 'uploads/doctors/';
+		if(isset($_FILES['image']['name']) && !empty($_FILES['image']['name'])){
+             $uploadPath = 'uploads/products/';
              $config['upload_path'] = $uploadPath;
              $config['allowed_types']    = 'jpg|png';
 		     $config['max_size']         = 2048;
@@ -73,19 +63,19 @@ class AdminDoctor extends CI_Controller {
             
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
-            if($this->upload->do_upload('avatar')){
+            if($this->upload->do_upload('image')){
             	$fileData = $this->upload->data();
-            	$_POST['avatar'] =$fileData['file_name'];
-	        	$data=$this->DoctorModel->save_doctor();
+            	$_POST['image'] =$fileData['file_name'];
+	        	$data=$this->ProductModel->save_product();
 	     		echo json_encode($data);
             }
         }
 	 }
 	    
 	
-	function update_doctor(){
-		if(isset($_FILES['avatar_edit']['name']) && !empty($_FILES['avatar_edit']['name'])){
-             $uploadPath = 'uploads/doctors/';
+	function update_product(){
+		if(isset($_FILES['image_edit']['name']) && !empty($_FILES['image_edit']['name'])){
+             $uploadPath = 'uploads/products/';
              $config['upload_path'] = $uploadPath;
              $config['allowed_types']    = 'jpg|png';
 		     $config['max_size']         = 2048;
@@ -96,21 +86,21 @@ class AdminDoctor extends CI_Controller {
             
             $this->load->library('upload', $config);
             $this->upload->initialize($config);
-            if($this->upload->do_upload('avatar_edit')){
+            if($this->upload->do_upload('image_edit')){
             	$fileData = $this->upload->data();
-            	$_POST['avatar_edit'] =$fileData['file_name'];
-	        	$data=$this->DoctorModel->update_doctor();
+            	$_POST['image_edit'] =$fileData['file_name'];
+	        	$data=$this->ProductModel->update_product();
         		echo json_encode($data);
             }
         }else{
-        	$data=$this->DoctorModel->update_doctor();
+        	$data=$this->ProductModel->update_product();
         	echo json_encode($data);
         }
         
     }
 	
-	function delete_doctor(){
-        $data=$this->DoctorModel->delete_doctor();
+	function delete_product(){
+        $data=$this->ProductModel->delete_product();
         echo json_encode($data);
     }
 	

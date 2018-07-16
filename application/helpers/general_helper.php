@@ -94,6 +94,37 @@ if(!function_exists('setProtocol'))
     }
 }
 
+if ( ! function_exists('opening_time'))
+{
+    function opening_time($schedule_id)
+    {
+        $ci=& get_instance();
+        $ci->load->database();
+        $query = $ci->db->get_where('schedules_days',array('schedule_id'=>$schedule_id));
+        return $query->first_row()->opening_time;
+    }   
+}
+if ( ! function_exists('closing_time'))
+{
+    function closing_time($schedule_id)
+    {
+        $ci=& get_instance();
+        $ci->load->database();
+        $query = $ci->db->get_where('schedules_days',array('schedule_id'=>$schedule_id));
+        return $query->first_row()->closing_time;
+    }   
+}
+if ( ! function_exists('getDays'))
+{
+    function getDays($schedule_id)
+    {
+        $ci=& get_instance();
+        $ci->load->database();
+        $query = $ci->db->get_where('issues',array('schedule_id'=>$schedule_id));
+        return $query->result_array();
+    }   
+}
+
 
 
 

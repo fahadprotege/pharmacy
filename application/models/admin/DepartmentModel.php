@@ -19,8 +19,7 @@ class DepartmentModel extends CI_Model
 	
 	function viewRecords()
     {
-        $this->db->select('departments.*,status.name as status_name');
-        $this->db->join('status','status.id=departments.status_id');
+        $this->db->select('departments.*');
         $this->db->from('departments');
         $query = $this->db->get();
 		return $query->result();
@@ -38,7 +37,6 @@ class DepartmentModel extends CI_Model
 			$data = array(
 					'name'  => $this->input->post('name'), 
 					'description'  => $this->input->post('description'), 
-					'status_id' => $this->input->post('status_id'), 
 				);
 		
 			if($this->db->insert('departments',$data)){
@@ -59,11 +57,9 @@ class DepartmentModel extends CI_Model
 		$id  = $this->input->post('id'); 
 		$name  = $this->input->post('name'); 
 		$description  = $this->input->post('description'); 
-		$status_id = $this->input->post('status_id');
  
         $this->db->set('name', $name);
         $this->db->set('description', $description);
-		$this->db->set('status_id', $status_id);
         $this->db->where('id', $id);
         $result=$this->db->update('departments');
         return $result;

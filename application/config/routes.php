@@ -67,6 +67,16 @@ $route['SubAdministartors'] 	 	 				 = 'admin/AdminSubAdmin/subAdminListing';
 $route['Users'] 	 	 				 = 'admin/AdminUser/userListing';
 $route['Departments'] 	 	 				 = 'admin/AdminDepartment/departmentListing';
 $route['Doctors'] 	 	 				 = 'admin/AdminDoctor/doctorListing';
+$route['Labs'] 	 	 				 = 'admin/AdminLab/labListing';
+$route['Tests'] 	 	 				 = 'admin/AdminTest/testListing';
+$route['Categories'] 	 	 				 = 'admin/AdminCategory/categoryListing';
+
+$route['Products'] 	 	 				 = 'admin/AdminProduct/productListing';
+
+
+$route['Schedules'] 	 	 				 = 'admin/AdminSchedule/scheduleListing';
+
+
 
 
 // Email
@@ -91,5 +101,8 @@ $route['user/forgotPassword'] 	 					 = 'user/UserLogin/forgotPassword';
 $route['user/resetPasswordUser']						 = "user/UserLogin/resetPasswordUser";
 $route['user/resetPasswordConfirmUser/(:any)/(:any)'] = "user/UserLogin/resetPasswordConfirmUser/$1/$2";
 $route['user/createPasswordUser'] 					 = "user/UserLogin/createPasswordUser";
+$route['Cart'] 	 	 				 = 'Dashboard/cart';
+
+// extra 
 
 

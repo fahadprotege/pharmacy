@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminUser extends CI_Controller {
+class AdminSchedule extends CI_Controller {
 	
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model('admin/UserModel','UserModel');
+		$this->load->model('admin/ScheduleModel','ScheduleModel');
 		
     }
 	
@@ -30,7 +30,7 @@ class AdminUser extends CI_Controller {
         }
 	}
 	
-	public function userListing()
+	public function ScheduleListing()
 	{
 		$isLoggedIn = $this->session->userdata('isLoggedIn');
         
@@ -40,35 +40,37 @@ class AdminUser extends CI_Controller {
         }
         else
         {
+        	$data["labs"] = $this->ScheduleModel->getLabs();
 			$this->load->view('admin/includes/header');
 			$this->load->view('admin/includes/nav');
-			$this->load->view('admin/user/view');
+			$this->load->view('admin/schedule/view',$data);
 			$this->load->view('admin/includes/footer');
 		}
 	}
 	
 	
-	public function getUserData()
+	public function getScheduleData()
 	{
 		
-		$data = $this->UserModel->viewRecords();
+		$data = $this->ScheduleModel->viewRecords();
 		echo json_encode($data);
 		
 	}
 
 	
-	function save(){
-        $data=$this->UserModel->save_user();
+	function save_schedule(){
+      
+        $data=$this->ScheduleModel->save_schedule();
 		echo json_encode($data);
     }
 	
-	function update(){
-        $data=$this->UserModel->update_user();
+	function update_schedule(){
+        $data=$this->ScheduleModel->update_schedule();
         echo json_encode($data);
     }
 	
-	function delete(){
-        $data=$this->UserModel->delete_user();
+	function delete_schedule(){
+        $data=$this->ScheduleModel->delete_schedule();
         echo json_encode($data);
     }
 	

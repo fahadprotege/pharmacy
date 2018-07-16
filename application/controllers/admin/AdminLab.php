@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminUser extends CI_Controller {
+class AdminLab extends CI_Controller {
 	
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model('admin/UserModel','UserModel');
+		$this->load->model('admin/LabModel','LabModel');
 		
     }
 	
@@ -30,7 +30,7 @@ class AdminUser extends CI_Controller {
         }
 	}
 	
-	public function userListing()
+	public function labListing()
 	{
 		$isLoggedIn = $this->session->userdata('isLoggedIn');
         
@@ -42,33 +42,34 @@ class AdminUser extends CI_Controller {
         {
 			$this->load->view('admin/includes/header');
 			$this->load->view('admin/includes/nav');
-			$this->load->view('admin/user/view');
+			$this->load->view('admin/lab/view');
 			$this->load->view('admin/includes/footer');
 		}
 	}
 	
 	
-	public function getUserData()
+	public function getLabData()
 	{
 		
-		$data = $this->UserModel->viewRecords();
+		$data = $this->LabModel->viewRecords();
 		echo json_encode($data);
 		
 	}
 
 	
-	function save(){
-        $data=$this->UserModel->save_user();
+	function save_lab(){
+
+        $data=$this->LabModel->save_lab();
 		echo json_encode($data);
     }
 	
-	function update(){
-        $data=$this->UserModel->update_user();
+	function update_lab(){
+        $data=$this->LabModel->update_lab();
         echo json_encode($data);
     }
 	
-	function delete(){
-        $data=$this->UserModel->delete_user();
+	function delete_lab(){
+        $data=$this->LabModel->delete_lab();
         echo json_encode($data);
     }
 	

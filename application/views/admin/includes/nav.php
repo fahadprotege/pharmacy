@@ -161,7 +161,43 @@
               </p>
             </a>
           </li>
+           <li class="nav-item">
+            <a href="<?php echo base_url(); ?>Labs" class="nav-link <?php if($this->uri->segment(1) == 'Labs'){ echo 'active'; }; ?>">
+              <i class="nav-icon fa fa-building"></i>
+              <p>
+                Laboratory
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="<?php echo base_url(); ?>Tests" class="nav-link <?php if($this->uri->segment(1) == 'Tests'){ echo 'active'; }; ?>">
+              <i class="nav-icon fa fa-building"></i>
+              <p>
+                Tests
+              </p>
+            </a>
+          </li>
+
+            <li class="nav-item">
+            <a href="<?php echo base_url(); ?>Categories" class="nav-link <?php if($this->uri->segment(1) == 'Categories'){ echo 'active'; }; ?>">
+              <i class="nav-icon fa fa-building"></i>
+              <p>
+                Categories
+              </p>
+            </a>
+          </li>
+		  
+		  <li class="nav-item">
+            <a href="<?php echo base_url(); ?>Products" class="nav-link <?php if($this->uri->segment(1) == 'Products'){ echo 'active'; }; ?>">
+              <i class="nav-icon fa fa-building"></i>
+              <p>
+                Products
+              </p>
+            </a>
+          </li>
           
+
+
         
         </ul>
       </nav>

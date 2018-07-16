@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Departments</h1>
+            <h1 class="m-0 text-dark">Categories Information</h1>
       
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -30,7 +30,7 @@
       <div class="card">
             <div class="card-header">
               <h3 class="card-title">Data Table With Full Features</h3>
-        <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_DepartmentAdd"><span class="fa fa-plus"></span> Add New</a></div>
+        <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#Modal_CategoryAdd"><span class="fa fa-plus"></span> Add New</a></div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -41,11 +41,10 @@
                   <thead>
                     <tr>
                       <th>Name</th>
-                      <th>Department</th>
                       <th style="text-align: right;">Actions</th>
                     </tr>
                   </thead>
-                  <tbody id="show_departmentdata">
+                  <tbody id="show_categorydata">
                      
                   </tbody>
                 </table>
@@ -57,12 +56,12 @@
     
     
     <!-- MODAL ADD -->
-            <form id="adddepartmentform">
-            <div class="modal fade" id="Modal_DepartmentAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form id="addcategoryform">
+            <div class="modal fade" id="Modal_CategoryAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLabel">Add New Department <br/><span id="error"></span></h5>
+                   <h5 class="modal-title" id="exampleModalLabel">Add New Category <br/><span id="error"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -73,13 +72,7 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Name</label>
                             <div class="col-md-10">
-                              <input type="text" name="name" class="form-control" placeholder="Department Name" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Description</label>
-                            <div class="col-md-10">
-                              <input type="text" name="description" class="form-control" placeholder="Department description">
+                              <input type="text" name="name" class="form-control" placeholder="Category Name" >
                             </div>
                         </div>
                   </div>
@@ -104,11 +97,11 @@
  
         <!-- MODAL EDIT -->
         <form>
-            <div class="modal fade" id="Modal_DepartmentEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="Modal_CategoryEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Department</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Category<br/><span id="edit_error"></span></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -118,20 +111,14 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Name</label>
                             <div class="col-md-10">
-                              <input type="text" name="name_edit" class="form-control" placeholder="Department Name" >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-2 col-form-label">Description</label>
-                            <div class="col-md-10">
-                              <input type="text" name="description_edit" class="form-control" placeholder="Department description">
+                              <input type="text" name="name_edit" class="form-control" placeholder="Category Name" >
                             </div>
                         </div>
                         
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" type="submit" id="btn_departmentupdate" class="btn btn-primary">Update</button>
+                    <button type="button" type="submit" id="btn_categoryupdate" class="btn btn-primary">Update</button>
                   </div>
                 </div>
               </div>
@@ -141,11 +128,11 @@
  
         <!--MODAL DELETE-->
          <form>
-            <div class="modal fade" id="Modal_DepartmentDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="Modal_CategoryDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Delete Department</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -156,7 +143,7 @@
                   <div class="modal-footer">
                     <input type="hidden" name="id" id="id" class="form-control">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                    <button type="button" type="submit" id="btn_departmentdelete" class="btn btn-primary">Yes</button>
+                    <button type="button" type="submit" id="btn_categorydelete" class="btn btn-primary">Yes</button>
                   </div>
                 </div>
               </div>
